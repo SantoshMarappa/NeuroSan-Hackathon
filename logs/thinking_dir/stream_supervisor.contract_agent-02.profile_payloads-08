@@ -1,0 +1,135 @@
+Agent: stream_supervisor.contract_agent-02.profile_payloads-08
+
+[AGENT] @ 2026-10-24 09:32:40:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": null,
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 2,
+                "tool": "contract_agent"
+            },
+            {
+                "instantiation_index": 8,
+                "tool": "profile_payloads"
+            }
+        ],
+        "origin_str": "stream_supervisor.contract_agent-02.profile_payloads-08",
+        "sample_path": "data/stream_medallion/payments_auth_sample.jsonl"
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 09:32:40:
+
+Running CodedTool class ProfilePayloads.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 09:32:40:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "contract_in_use": "payments_auth_v3",
+        "drift": {
+            "contract_fields_never_seen": [
+                "amount",
+                "card_no",
+                "currency",
+                "decline_reason",
+                "email",
+                "event_ts",
+                "holder",
+                "merchant_id",
+                "status",
+                "txn_id"
+            ],
+            "mixed_type_fields": [],
+            "new_fields_not_in_contract": []
+        },
+        "duplicate_keys": 0,
+        "invalid_json": 259,
+        "pii_candidates_without_policy": {},
+        "profile": {},
+        "records_total": 259,
+        "sample_path": "data/stream_medallion/payments_auth_sample.jsonl"
+    }
+}
+```
+
+[AGENT] @ 2026-10-24 09:36:58:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": null,
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 2,
+                "tool": "contract_agent"
+            },
+            {
+                "instantiation_index": 8,
+                "tool": "profile_payloads"
+            }
+        ],
+        "origin_str": "stream_supervisor.contract_agent-02.profile_payloads-08",
+        "sample_path": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 09:36:58:
+
+Running CodedTool class ProfilePayloads.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 09:36:58:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "contract_in_use": "payments_auth_v3",
+        "drift": {
+            "contract_fields_never_seen": [
+                "amount",
+                "card_no",
+                "currency",
+                "decline_reason",
+                "email",
+                "event_ts",
+                "holder",
+                "merchant_id",
+                "status",
+                "txn_id"
+            ],
+            "mixed_type_fields": [],
+            "new_fields_not_in_contract": []
+        },
+        "duplicate_keys": 0,
+        "invalid_json": 259,
+        "pii_candidates_without_policy": {},
+        "profile": {},
+        "records_total": 259,
+        "sample_path": "data/stream_medallion\\payments_auth_sample.jsonl"
+    }
+}
+```

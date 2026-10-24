@@ -1,0 +1,135 @@
+{
+    # `ns init` scaffolds this file into new projects as registries/manifest.hocon, and it is the
+    # single source of truth for what a new project gets: InitCommand parses it and installs every
+    # network declared below, together with each one's transitive dependencies. Adding a key here
+    # installs that network. Keys are paths relative to registries/ in the neuro-san-studio source;
+    # a key with no matching file there lands nothing on disk and is served as a 404.
+
+    # Networks created by `agent_network_designer` are written under registries/generated/.
+    # Fresh `ns init` projects start with an empty list.
+    include "registries/generated/manifest.hocon",
+    "basic/book_recommender.hocon": true,
+    "basic/music_nerd.hocon": true,
+
+    #
+    # Agent Network Designer family. Installed so a brand-new project can design agent networks
+    # immediately -- the nsflow NEW button, the tutorial, and the docs all assume the designer
+    # is there.
+    #
+    "agent_network_designer.hocon": true,
+    "streamforge.hocon": true,
+    "agent_network_editor.hocon": {
+        # Support network for agent_network_designer.
+        # We want it served up, but not listed as a public agent network.
+        "serve": true,
+        "public": false
+    },
+    "agent_network_instructions_editor.hocon": {
+        "serve": true,
+        "public": false
+    },
+    "agent_network_query_generator.hocon": {
+        "serve": true,
+        "public": false
+    },
+    # The designer researches named organizations through this network before it designs
+    # anything, so it must be served wherever the designer is. Public as well: it is a
+    # general-purpose research network worth using on its own, as in the studio registry.
+    "tools/internet_info_gatherer.hocon": true,
+
+    # Generates test fixtures for an existing agent network.
+    "agent_network_test_generator.hocon": true,
+
+    #
+    # CRUSE: the interactive UI that adapts itself to the user's and agents' needs.
+    # Support networks for the interface, so served but not publicly listed.
+    #
+    "experimental/cruse_theme_agent.hocon": {
+        "serve": true,
+        "public": false
+    },
+    "experimental/cruse_widget_agent.hocon": {
+        "serve": true,
+        "public": false
+    },
+    "basic/advanced_calculator.hocon": true,
+    "basic/book_recommender_multiple_llm_configs.hocon": true,
+    "basic/coding_assistant.hocon": true,
+    "basic/coffee_finder.hocon": true,
+    "basic/coffee_finder_advanced.hocon": true,
+    "basic/hello_world.hocon": true,
+    "basic/internal_communication_skill.hocon": true,
+    "basic/job_guessing_skill.hocon": true,
+    "basic/music_nerd_llm_fallbacks.hocon": true,
+    "basic/music_nerd_local.hocon": true,
+    "basic/music_nerd_pro.hocon": true,
+    "basic/music_nerd_pro_local.hocon": true,
+    "basic/music_nerd_pro_sly.hocon": true,
+    "basic/music_nerd_pro_sly_local.hocon": true,
+    "basic/pii_middleware.hocon": true,
+    "basic/smart_home.hocon": true,
+    "basic/wolfram_mcp.hocon": true,
+    "experimental/conscious_agent.hocon": true,
+    "experimental/copy_cat.hocon": true,
+    "experimental/cruse_agent.hocon": true,
+    "experimental/kwik_agents.hocon": true,
+    "experimental/log_analysis_agents.hocon": true,
+    "experimental/mdap_decomposer.hocon": true,
+    "experimental/six_thinking_hats.hocon": true,
+    "industry/LinkedInJobSeekerSupportNetwork.hocon": true,
+    "industry/airbnb.hocon": true,
+    "industry/airline_policy.hocon": true,
+    "industry/airline_policy_web_search.hocon": true,
+    "industry/banking_ops.hocon": true,
+    "industry/booking.hocon": true,
+    "industry/carmax.hocon": true,
+    "industry/consumer_decision_assistant.hocon": true,
+    "industry/macys.hocon": true,
+    "industry/expedia.hocon": true,
+    "industry/cpg_agents.hocon": true,
+    "industry/insurance_agents.hocon": true,
+    "industry/insurance_underwriting_agents.hocon": true,
+    "industry/intranet_agents.hocon": true,
+    "industry/intranet_agents_with_memory_routing.hocon": true,
+    "industry/intranet_agents_with_tools.hocon": true,
+    "industry/keybank.hocon": true,
+    "industry/news_sentiment_analysis.hocon": true,
+    "industry/real_estate.hocon": true,
+    "industry/retail_ops_and_customer_service.hocon": true,
+    "industry/telco_network_orchestration.hocon": true,
+    "industry/telco_network_support.hocon": true,
+    "industry/therapy_vignette_supervisors.hocon": true,
+    "agent_network_architect.hocon": true,
+    "tools/a2a_research_report.hocon": true,
+    "tools/agent_network_html_creator.hocon": true,
+    "tools/agentforce.hocon": true,
+    "tools/agentic_rag.hocon": true,
+    "tools/agentspace_adapter.hocon": true,
+    "tools/anthropic_code_execution.hocon": true,
+    "tools/anthropic_web_search.hocon": true,
+    "tools/arxiv_retriever.hocon": true,
+    "tools/brave_search.hocon": true,
+    "tools/confluence_rag.hocon": true,
+    "tools/ddgs_search.hocon": true,
+    "tools/firecrawl_search.hocon": true,
+    "tools/fxmacrodata.hocon": true,
+    "tools/gemini_image_generation.hocon": true,
+    "tools/gmail.hocon": true,
+    "tools/google_maps.hocon": true,
+    "tools/google_search.hocon": true,
+    "tools/google_workspace.hocon": true,
+    "tools/mcp_bmi_streamable_http.hocon": true,
+    "tools/now_agents.hocon": true,
+    "tools/openai_code_interpreter.hocon": true,
+    "tools/openai_image_generation.hocon": true,
+    "tools/openai_web_search.hocon": true,
+    "tools/pdf_rag.hocon": true,
+    "tools/persistent_memory_local.hocon": true,
+    "tools/persistent_memory_mem0.hocon": true,
+    "tools/serply_search.hocon": true,
+    "tools/visual_question_answering.hocon": true,
+    "tools/wikimedia_search.hocon": true,
+    "tools/wikipedia_rag.hocon": true,
+    "tools/you_search.hocon": true,
+    "tools/you_search_free.hocon": true
+}

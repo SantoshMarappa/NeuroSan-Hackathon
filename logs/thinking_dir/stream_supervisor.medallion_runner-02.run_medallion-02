@@ -1,0 +1,87 @@
+Agent: stream_supervisor.medallion_runner-02.run_medallion-02
+
+[AGENT] @ 2026-10-24 09:37:05:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": "{\"feed\": \"payments_auth_v3\", \"pii\": {\"tokenise\": [\"card_no\", \"email\", \"holder\"], \"hash\": [\"merchant_id\", \"txn_id\"]}}",
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 2,
+                "tool": "medallion_runner"
+            },
+            {
+                "instantiation_index": 2,
+                "tool": "run_medallion"
+            }
+        ],
+        "origin_str": "stream_supervisor.medallion_runner-02.run_medallion-02",
+        "sample_path": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 09:37:05:
+
+Running CodedTool class RunMedallion.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 09:37:05:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": "Error: invalid feed descriptor ('fields')"
+}
+```
+
+[AGENT] @ 2026-10-24 09:38:07:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": "{\"feed\": \"payments_auth_v3\", \"pii\": {\"tokenise\": [\"card_no\", \"email\", \"holder\"], \"hash\": [\"merchant_id\", \"txn_id\"], \"mask\": [], \"drop\": []}, \"schema\": {\"amount\": \"float\", \"card_no\": \"string\", \"currency\": \"string\", \"decline_reason\": \"string\", \"email\": \"string\", \"event_ts\": \"timestamp\", \"holder\": \"string\", \"merchant_id\": \"string\", \"status\": \"string\", \"txn_id\": \"string\"}}",
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 2,
+                "tool": "medallion_runner"
+            },
+            {
+                "instantiation_index": 2,
+                "tool": "run_medallion"
+            }
+        ],
+        "origin_str": "stream_supervisor.medallion_runner-02.run_medallion-02",
+        "sample_path": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 09:38:07:
+
+Running CodedTool class RunMedallion.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 09:38:07:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": "Error: invalid feed descriptor ('fields')"
+}
+```

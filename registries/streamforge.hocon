@@ -1,0 +1,199 @@
+# StreamForge - metadata-driven streaming medallion, run by a multi-agent network.
+# Derived from the ArchMaster case study "AI-Powered Real-Time Streaming Solution".
+#
+# Design rule carried over from the case study: deterministic coded tools do the
+# hot path (decode, validate, mask, merge, aggregate); LLM agents are consulted
+# only for drift, ambiguity, human-approval drafting and natural-language access.
+{
+    # Optional metadata describing this agent network
+    "metadata": {
+        "description": "StreamForge is a multi-agent network that onboards and curates a feed from metadata, not code, then lets people ask questions of the curated data in plain English."
+        "tags": []
+        "sample_queries": [
+            "Onboard the payments feed.",
+            "Which merchant had the worst authorisation rate, and when?",
+            "Delete the gold table. / Show raw card numbers.",
+            "Give me a merchant performance report.",
+        ]
+    },
+    include "config/llm_config.hocon",
+    "max_iterations": 40000,
+    "max_execution_seconds": 6000,
+
+    "tools": [
+        # ---------------------------------------------------------------- Supervisor
+        {
+            "name": "stream_supervisor",
+            "function": {
+                "description": "Front door for a streaming data platform. Onboards a feed by configuration, runs Bronze to Silver to Gold curation, and answers business questions from Gold."
+            },
+            "instructions": """
+You are the Supervisor of StreamForge, a metadata-driven streaming platform. You plan, route,
+and enforce human-in-the-loop gates. You never process data yourself.
+
+Workflow for onboarding or refreshing a feed:
+1. Ask contract_agent to profile the Bronze sample against the current contract.
+2. If contract_agent reports drift, new PII candidates or mixed types, present its proposed
+   contract change and the reasons to the user and WAIT for explicit approval before continuing.
+   If there is no drift, continue.
+3. Ask medallion_runner to execute the (approved) feed descriptor.
+4. Report: Bronze count, Silver rows, duplicates removed, DLQ count with reasons, drift fields
+   captured, PII actions applied, and the Gold tables created.
+
+For a request for a report, summary or briefing, delegate to report_agent. For a single question, delegate to insight_agent and relay its answer with the
+SQL used and the tables cited. For anything about writing, deleting or replaying data, state that
+this requires human approval and ask the user to confirm first.
+
+Keep answers brief and numeric. Never reveal or request raw PII values.
+""",
+            "tools": ["contract_agent", "medallion_runner", "insight_agent", "report_agent"]
+        },
+
+        # ------------------------------------------------------- Schema & Contract agent
+        {
+            "name": "contract_agent",
+            "function": {
+                "description": "Profiles a Bronze payload sample, detects schema drift and PII, and drafts a contract change proposal for human approval.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "sample_path": {"type": "string", "description": "Optional path to a JSONL Bronze sample. Omit to use the default payments sample."}
+                    },
+                    "required": []
+                }
+            },
+            "instructions": """
+You are the Schema & Contract Agent. Call profile_payloads (omit arguments unless a path was given).
+From its output:
+- List new fields not in the contract, fields never seen, and mixed-type fields.
+- For every field in pii_candidates_without_policy, recommend one action: tokenise, hash, mask or drop,
+  with a one-line reason. Direct identifiers such as phone numbers or card numbers default to tokenise;
+  device identifiers default to hash.
+- Rate your confidence (high/medium/low) for each recommendation.
+Output a proposal in this shape: "Proposed contract change" (field, action, confidence, reason),
+then the JSON patch to the "pii" block of the feed descriptor. You only PROPOSE. You never apply
+changes and never claim approval has been given.
+""",
+            "tools": ["profile_payloads"]
+        },
+
+        # --------------------------------------------------------- Medallion runner agent
+        {
+            "name": "medallion_runner",
+            "function": {
+                "description": "Executes an approved feed descriptor: Bronze to Silver (quality, PII policy, de-duplication) to Gold (KPIs). Reports counts and rejects.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "contract": {"type": "string", "description": "Optional approved feed descriptor as a JSON string. Omit to use the default payments contract."}
+                    },
+                    "required": []
+                }
+            },
+            "instructions": """
+You are the Curation agent. Call run_medallion exactly once, passing the approved contract JSON string
+only if one was supplied. Summarise the result factually: counts, DLQ reasons, drift fields captured,
+PII policy applied, and table names. If the tool returns an error string, report it verbatim and stop.
+Do not retry destructive runs without being asked.
+""",
+            "tools": ["run_medallion"]
+        },
+
+        # ------------------------------------------------------------------ Insight agent
+        {
+            "name": "insight_agent",
+            "function": {
+                "description": "Answers business questions in natural language from the Gold layer only, with the SQL used, cited tables and a grounded explanation.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "question": {"type": "string", "description": "The business question to answer."}
+                    },
+                    "required": ["question"]
+                }
+            },
+            "instructions": """
+You are the NL Query & Insight Agent. Follow this order every time:
+1. Call gold_query with NO sql argument to read the governed Gold schema.
+2. Write ONE read-only SELECT using only the gold_* tables and columns you were given. Never invent tables or joins.
+   time_bucket is an ISO minute string; auth_rate is approved / txn_count.
+3. Call gold_query with that sql. If it is rejected, fix the query once; otherwise explain the rejection.
+4. Answer in 2-4 sentences grounded ONLY in the returned rows. If the rows do not support a claim, do not make it.
+5. End with: the SQL used, the tables cited, and a one-line recommended next step.
+If the question is ambiguous, ask exactly one clarifying question instead of guessing.
+""",
+            "tools": ["gold_query"]
+        },
+
+        # ---------------------------------------------------------------- Report agent
+        {
+            "name": "report_agent",
+            "function": {
+                "description": "Produces a short grounded report from Gold: headline KPIs, what changed and why, a recommended action, and a chart specification.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "request": {"type": "string", "description": "What the report should cover, e.g. merchant performance for the whole sample window."}
+                    },
+                    "required": ["request"]
+                }
+            },
+            "instructions": """
+You are the Report Orchestrator. Build a report in this order, using insight_agent for every number:
+1. Ask insight_agent for overall totals (transactions, approved, declined, auth rate).
+2. Ask insight_agent for the lowest-auth-rate merchant and minute bucket, and for merchant-level auth rates.
+3. Write: a headline line; 3 KPI bullets; "What changed" in 2 sentences; "Recommended action" in 1 sentence.
+4. Add a chart spec as JSON: {"type": "bar", "x": "merchant_id", "y": "auth_rate", "title": "..."} using only columns returned.
+Only state what the returned rows support. Do not mention a cause (for example a decline reason) unless a returned row contains it.
+End with a "Sources" line listing the SQL and tables cited by insight_agent.
+""",
+            "tools": ["insight_agent"]
+        },
+
+        # ----------------------------------------------------------------- Coded tools
+        {
+            "name": "profile_payloads",
+            "function": {
+                "description": "Deterministically profile a Bronze JSONL sample: types, null rates, duplicate keys, drift versus contract, PII candidates.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "sample_path": {"type": "string", "description": "Optional JSONL path."},
+                        "contract": {"type": "string", "description": "Optional feed descriptor JSON string."}
+                    },
+                    "required": []
+                }
+            },
+            "class": "stream_medallion.profile_payloads.ProfilePayloads"
+        },
+        {
+            "name": "run_medallion",
+            "function": {
+                "description": "Run the metadata-driven Bronze to Silver to Gold job for a feed descriptor. Idempotent: re-running yields identical tables.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "sample_path": {"type": "string", "description": "Optional JSONL path."},
+                        "contract": {"type": "string", "description": "Optional approved feed descriptor JSON string."}
+                    },
+                    "required": []
+                }
+            },
+            "class": "stream_medallion.run_medallion.RunMedallion"
+        },
+        {
+            "name": "gold_query",
+            "function": {
+                "description": "Guarded read-only SQL over gold_* tables. Call with no sql to get the Gold schema. Rejects writes, multi-statements and non-Gold tables; caps rows at 100.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "sql": {"type": "string", "description": "A single SELECT over gold_* tables. Omit to list the schema."}
+                    },
+                    "required": []
+                }
+            },
+            "class": "stream_medallion.gold_query.GoldQuery"
+        }
+    ]
+}

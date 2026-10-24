@@ -1,0 +1,52 @@
+{
+    "metadata":{
+        "name": "BookRecommender",
+        "description": "Recommends books",
+        "sample_queries": ["Recommend me a fantasy book"],
+    }
+
+    include "config/llm_config.hocon",
+
+    "default_params": {
+                    "type": "object",
+                    "properties": {
+                        "query":{
+                            "type": "string",
+                            "description": "User query for fiction book recommendation",
+                        }
+                    }
+                },
+    "tools":[
+        {
+            "name": "BookRecommender",
+            "instructions": "You recommend books",
+            "tools":["FantasyBookRecommender", "SaveFile"],
+        },
+        {
+            "name": "FantasyBookRecommender",
+            "instructions": "You recommend fantasy books",
+            "functions":{
+                "description": "Recommends fantasy books",
+                "parameters": ${default_params}
+            }
+        },
+        {
+            "name": "SaveFile",
+            "description": "Save content to a file",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "file_name": {
+                        "type": "string",
+                        "description": "Name of the file"
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "Content to write"
+                    }
+                },
+                "required": ["file_name", "content"]
+            }
+        }
+    ]
+}

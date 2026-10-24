@@ -1,0 +1,169 @@
+Agent: stream_supervisor.report_agent.insight_agent-02.gold_query-03
+
+[AGENT] @ 2026-10-24 10:44:55:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "report_agent"
+            },
+            {
+                "instantiation_index": 2,
+                "tool": "insight_agent"
+            },
+            {
+                "instantiation_index": 3,
+                "tool": "gold_query"
+            }
+        ],
+        "origin_str": "stream_supervisor.report_agent.insight_agent-02.gold_query-03",
+        "sql": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 10:44:55:
+
+Running CodedTool class GoldQuery.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 10:44:55:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "gold_payments_auth_v3_kpi": [
+            "merchant_id",
+            "time_bucket",
+            "txn_count",
+            "approved",
+            "declined",
+            "auth_rate",
+            "total_amount"
+        ]
+    }
+}
+```
+
+[AGENT] @ 2026-10-24 10:51:33:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "report_agent"
+            },
+            {
+                "instantiation_index": 2,
+                "tool": "insight_agent"
+            },
+            {
+                "instantiation_index": 3,
+                "tool": "gold_query"
+            }
+        ],
+        "origin_str": "stream_supervisor.report_agent.insight_agent-02.gold_query-03",
+        "sql": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 10:51:33:
+
+Running CodedTool class GoldQuery.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 10:51:33:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "gold_payments_auth_v3_kpi": [
+            "merchant_id",
+            "time_bucket",
+            "txn_count",
+            "approved",
+            "declined",
+            "auth_rate",
+            "total_amount"
+        ]
+    }
+}
+```
+
+[AGENT] @ 2026-10-24 11:03:35:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "report_agent"
+            },
+            {
+                "instantiation_index": 2,
+                "tool": "insight_agent"
+            },
+            {
+                "instantiation_index": 3,
+                "tool": "gold_query"
+            }
+        ],
+        "origin_str": "stream_supervisor.report_agent.insight_agent-02.gold_query-03",
+        "sql": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 11:03:35:
+
+Running CodedTool class GoldQuery.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 11:03:35:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "gold_payments_auth_v3_kpi": [
+            "merchant_id",
+            "time_bucket",
+            "txn_count",
+            "approved",
+            "declined",
+            "auth_rate",
+            "total_amount"
+        ]
+    }
+}
+```

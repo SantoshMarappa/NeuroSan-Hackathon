@@ -1,0 +1,243 @@
+Agent: stream_supervisor.medallion_runner
+
+[SYSTEM] @ 2026-10-24 09:37:02:
+
+You are the Curation agent. Call run_medallion exactly once, passing the approved contract JSON string
+only if one was supplied. Summarise the result factually: counts, DLQ reasons, drift fields captured,
+PII policy applied, and table names. If the tool returns an error string, report it verbatim and stop.
+Do not retry destructive runs without being asked.
+
+
+[HUMAN] @ 2026-10-24 09:37:02:
+The contract is '{{"pii": {{"tokenise": ["card_no", "email", "holder"], "hash": ["merchant_id", "txn_id"]}}}}'.
+
+[AGENT] @ 2026-10-24 09:37:02:
+Invoking: `run_medallion` with:
+```json
+{
+    "invoked_agent_name": "run_medallion",
+    "invoking_start": true,
+    "params": {
+        "contract": "{\"pii\": {\"tokenise\": [\"card_no\", \"email\", \"holder\"], \"hash\": [\"merchant_id\", \"txn_id\"]}}"
+    }
+}
+```
+
+[AGENT_TOOL_RESULT (result from run_medallion)] @ 2026-10-24 09:37:03:
+Error: invalid feed descriptor ('feed')
+
+[AI] @ 2026-10-24 09:37:03:
+Error: invalid feed descriptor ('feed')
+
+[AGENT] @ 2026-10-24 09:37:03:
+```json
+{
+    "caveats": [
+        "Token usage is tracked at the agent level. Counts include usage from any downstream agents called on this agent's behalf.",
+        "Token counts are approximate and estimated using tiktoken.",
+        "time_taken_in_seconds includes overhead from Langchain and Neuro SAN"
+    ],
+    "completion_tokens": 58,
+    "empty_responses": 0,
+    "prompt_tokens": 627,
+    "successful_requests": 2,
+    "time_taken_in_seconds": 1.2895786762237549,
+    "total_cost": 0.0,
+    "total_tokens": 685
+}
+```
+
+[SYSTEM] @ 2026-10-24 09:38:03:
+
+You are the Curation agent. Call run_medallion exactly once, passing the approved contract JSON string
+only if one was supplied. Summarise the result factually: counts, DLQ reasons, drift fields captured,
+PII policy applied, and table names. If the tool returns an error string, report it verbatim and stop.
+Do not retry destructive runs without being asked.
+
+
+[HUMAN] @ 2026-10-24 09:38:03:
+The contract is '{{"feed": "payments_auth_v3", "pii": {{"tokenise": ["card_no", "email", "holder"], "hash": ["merchant_id", "txn_id"], "mask": [], "drop": []}}, "schema": {{"fields": ["amount", "card_no", "currency", "decline_reason", "email", "event_ts", "holder", "merchant_id", "status", "txn_id"]}}}}'.
+
+[AGENT] @ 2026-10-24 09:38:04:
+Invoking: `run_medallion` with:
+```json
+{
+    "invoked_agent_name": "run_medallion",
+    "invoking_start": true,
+    "params": {
+        "contract": "{\"feed\": \"payments_auth_v3\", \"pii\": {\"tokenise\": [\"card_no\", \"email\", \"holder\"], \"hash\": [\"merchant_id\", \"txn_id\"], \"mask\": [], \"drop\": []}, \"schema\": {\"fields\": [\"amount\", \"card_no\", \"currency\", \"decline_reason\", \"email\", \"event_ts\", \"holder\", \"merchant_id\", \"status\", \"txn_id\"]}}"
+    }
+}
+```
+
+[AGENT_TOOL_RESULT (result from run_medallion)] @ 2026-10-24 09:38:04:
+Error: invalid feed descriptor ('fields')
+
+[AI] @ 2026-10-24 09:38:04:
+The tool returned an error:
+**Error: invalid feed descriptor ('fields')**
+
+[AGENT] @ 2026-10-24 09:38:04:
+```json
+{
+    "caveats": [
+        "Token usage is tracked at the agent level. Counts include usage from any downstream agents called on this agent's behalf.",
+        "Token counts are approximate and estimated using tiktoken.",
+        "time_taken_in_seconds includes overhead from Langchain and Neuro SAN"
+    ],
+    "completion_tokens": 132,
+    "empty_responses": 0,
+    "prompt_tokens": 821,
+    "successful_requests": 2,
+    "time_taken_in_seconds": 1.4755585193634033,
+    "total_cost": 0.0,
+    "total_tokens": 953
+}
+```
+
+[SYSTEM] @ 2026-10-24 10:42:56:
+
+You are the Curation agent. Call run_medallion exactly once, passing the approved contract JSON string
+only if one was supplied. Summarise the result factually: counts, DLQ reasons, drift fields captured,
+PII policy applied, and table names. If the tool returns an error string, report it verbatim and stop.
+Do not retry destructive runs without being asked.
+
+
+[HUMAN] @ 2026-10-24 10:42:56:
+The contract is '{{"pii": {{"fields": {{"phone": {{"action": "tokenise", "confidence": "high", "reason": "Direct identifier (phone number)"}}, "device_fingerprint": {{"action": "hash", "confidence": "high", "reason": "Device identifier"}}, "card_no": {{"action": "tokenise", "confidence": "high", "reason": "Direct identifier (card number)"}}, "email": {{"action": "tokenise", "confidence": "high", "reason": "Direct identifier (email)"}}, "holder": {{"action": "tokenise", "confidence": "medium", "reason": "Likely a direct identifier (cardholder name)"}}, "txn_date": {{"action": "drop", "confidence": "low", "reason": "Non-identifier but potentially sensitive timestamp"}}}}, "new_fields": ["approved_txns", "auth_rate_pct", "avg_ticket_size", "declined_txns", "device_fingerprint", "kpi_type", "phone", "total_txns", "total_volume_eur", "txn_date"], "mixed_type_fields": ["amount"]}}}}'.
+
+[AGENT] @ 2026-10-24 10:42:58:
+Invoking: `run_medallion` with:
+```json
+{
+    "invoked_agent_name": "run_medallion",
+    "invoking_start": true,
+    "params": {
+        "contract": "{{{\"pii\": {{\"fields\": {{\"phone\": {{\"action\": \"tokenise\", \"confidence\": \"high\", \"reason\": \"Direct identifier (phone number)\"}}, \"device_fingerprint\": {{\"action\": \"hash\", \"confidence\": \"high\", \"reason\": \"Device identifier\"}}, \"card_no\": {{\"action\": \"tokenise\", \"confidence\": \"high\", \"reason\": \"Direct identifier (card number)\"}}, \"email\": {{\"action\": \"tokenise\", \"confidence\": \"high\", \"reason\": \"Direct identifier (email)\"}}, \"holder\": {{\"action\": \"tokenise\", \"confidence\": \"medium\", \"reason\": \"Likely a direct identifier (cardholder name)\"}}, \"txn_date\": {{\"action\": \"drop\", \"confidence\": \"low\", \"reason\": \"Non-identifier but potentially sensitive timestamp\"}}}}, \"new_fields\": [\"approved_txns\", \"auth_rate_pct\", \"avg_ticket_size\", \"declined_txns\", \"device_fingerprint\", \"kpi_type\", \"phone\", \"total_txns\", \"total_volume_eur\", \"txn_date\"], \"mixed_type_fields\": [\"amount\"]}}}}}"
+    }
+}
+```
+
+[AGENT_TOOL_RESULT (result from run_medallion)] @ 2026-10-24 10:42:58:
+{'feed': 'payments_auth_v3', 'bronze_records': 260, 'silver_rows': 240, 'deduplicated': 12, 'dlq_rows': 8, 'dlq_reasons': {'type_mismatch:amount': 1, 'out_of_range:amount': 3, 'invalid_json': 2, 'missing_required:txn_id': 1, 'missing_required:amount': 1}, 'drift_fields_captured': ['device_fingerprint', 'phone'], 'pii_policy_applied': {'card_no': 'tokenise', 'email': 'hash', 'holder': 'mask'}, 'tables_created': {'silver': 'silver_payments_auth_v3', 'dlq': 'dlq_payments_auth_v3', 'gold': 'gold_payments_auth_v3_kpi'}, 'gold_rows': 15, 'dlq_sample': [{'line': 16, 'reason': 'type_mismatch:amount', 'payload': '{"txn_id": "XSTR1", "merchant_id": "4471", "amount": "12.50", "currency": "EUR", "status": "APPROVED", "decline_reason": null, "card_no": "tok_d2fa17e7f265", "email": "b1e700bec7b4c7c3", "holder": "L***", "event_ts": "2026-10-21T09:00:11"}'}, {'line': 47, 'reason': 'out_of_range:amount', 'payload': '{"txn_id": "X00055", "merchant_id": "4471", "amount": -50, "currency": "EUR", "status": "APPROVED", "decline_reason": null, "card_no": "tok_42961a6b1e0f", "email": "741d2c9b78231972", "holder": "L***", "event_ts": "2026-10-21T09:01:08"}'}, {'line': 53, 'reason': 'invalid_json', 'payload': '\t{"txn_id": "BROKEN", "amount":'}]}
+
+[AI] @ 2026-10-24 10:43:00:
+The medallion run for the **`payments_auth_v3`** feed completed with the following results:
+
+### **Counts**
+- **Bronze records**: 260
+- **Silver rows**: 240 (after deduplication: **12** removed)
+- **DLQ rows**: 8
+- **Gold rows**: 15
+
+### **DLQ Reasons**
+- `type_mismatch:amount`: 1
+- `out_of_range:amount`: 3
+- `invalid_json`: 2
+- `missing_required:txn_id`: 1
+- `missing_required:amount`: 1
+
+### **Drift Fields Captured**
+- `device_fingerprint`
+- `phone`
+
+### **PII Policy Applied**
+- `card_no`: **tokenised**
+- `email`: **hashed**
+- `holder`: **masked**
+
+### **Tables Created**
+- **Silver**: `silver_payments_auth_v3`
+- **DLQ**: `dlq_payments_auth_v3`
+- **Gold**: `gold_payments_auth_v3_kpi`
+
+[AGENT] @ 2026-10-24 10:43:00:
+```json
+{
+    "caveats": [
+        "Token usage is tracked at the agent level. Counts include usage from any downstream agents called on this agent's behalf.",
+        "Token counts are approximate and estimated using tiktoken.",
+        "time_taken_in_seconds includes overhead from Langchain and Neuro SAN"
+    ],
+    "completion_tokens": 517,
+    "empty_responses": 0,
+    "prompt_tokens": 1836,
+    "successful_requests": 2,
+    "time_taken_in_seconds": 3.865354299545288,
+    "total_cost": 0.0,
+    "total_tokens": 2353
+}
+```
+
+[SYSTEM] @ 2026-10-24 11:01:53:
+
+You are the Curation agent. Call run_medallion exactly once, passing the approved contract JSON string
+only if one was supplied. Summarise the result factually: counts, DLQ reasons, drift fields captured,
+PII policy applied, and table names. If the tool returns an error string, report it verbatim and stop.
+Do not retry destructive runs without being asked.
+
+
+[HUMAN] @ 2026-10-24 11:01:53:
+The contract is '{{"pii": {{"fields": [{{"name": "phone", "action": "tokenise"}}, {{"name": "device_fingerprint", "action": "hash"}}, {{"name": "card_no", "action": "tokenise"}}, {{"name": "email", "action": "tokenise"}}, {{"name": "holder", "action": "tokenise"}}], "new_fields": ["approved_txns", "auth_rate_pct", "avg_ticket_size", "declined_txns", "device_fingerprint", "kpi_type", "phone", "total_txns", "total_volume_eur", "txn_date"], "mixed_type_fields": ["amount"]}}}}'.
+
+[AGENT] @ 2026-10-24 11:01:55:
+Invoking: `run_medallion` with:
+```json
+{
+    "invoked_agent_name": "run_medallion",
+    "invoking_start": true,
+    "params": {
+        "contract": "{{{\"pii\": {{\"fields\": [{{\"name\": \"phone\", \"action\": \"tokenise\"}}, {{\"name\": \"device_fingerprint\", \"action\": \"hash\"}}, {{\"name\": \"card_no\", \"action\": \"tokenise\"}}, {{\"name\": \"email\", \"action\": \"tokenise\"}}, {{\"name\": \"holder\", \"action\": \"tokenise\"}}], \"new_fields\": [\"approved_txns\", \"auth_rate_pct\", \"avg_ticket_size\", \"declined_txns\", \"device_fingerprint\", \"kpi_type\", \"phone\", \"total_txns\", \"total_volume_eur\", \"txn_date\"], \"mixed_type_fields\": [\"amount\"]}}}}}"
+    }
+}
+```
+
+[AGENT_TOOL_RESULT (result from run_medallion)] @ 2026-10-24 11:01:55:
+{'feed': 'payments_auth_v3', 'bronze_records': 262, 'silver_rows': 240, 'deduplicated': 12, 'dlq_rows': 10, 'dlq_reasons': {'type_mismatch:amount': 1, 'out_of_range:amount': 3, 'invalid_json': 2, 'missing_required:txn_id': 1, 'missing_required:amount': 3}, 'drift_fields_captured': ['device_fingerprint', 'phone'], 'pii_policy_applied': {'card_no': 'tokenise', 'email': 'hash', 'holder': 'mask'}, 'tables_created': {'silver': 'silver_payments_auth_v3', 'dlq': 'dlq_payments_auth_v3', 'gold': 'gold_payments_auth_v3_kpi'}, 'gold_rows': 15, 'dlq_sample': [{'line': 16, 'reason': 'type_mismatch:amount', 'payload': '{"txn_id": "XSTR1", "merchant_id": "4471", "amount": "12.50", "currency": "EUR", "status": "APPROVED", "decline_reason": null, "card_no": "tok_d2fa17e7f265", "email": "b1e700bec7b4c7c3", "holder": "L***", "event_ts": "2026-10-21T09:00:11"}'}, {'line': 47, 'reason': 'out_of_range:amount', 'payload': '{"txn_id": "X00055", "merchant_id": "4471", "amount": -50, "currency": "EUR", "status": "APPROVED", "decline_reason": null, "card_no": "tok_42961a6b1e0f", "email": "741d2c9b78231972", "holder": "L***", "event_ts": "2026-10-21T09:01:08"}'}, {'line': 53, 'reason': 'invalid_json', 'payload': '\t{"txn_id": "BROKEN", "amount":'}]}
+
+[AI] @ 2026-10-24 11:01:58:
+**Summary of Medallion Run Results:**
+
+- **Feed:** `payments_auth_v3`
+- **Counts:**
+  - Bronze records: **262**
+  - Silver rows: **240** (12 deduplicated)
+  - DLQ rows: **10**
+  - Gold rows: **15**
+
+- **DLQ Reasons:**
+  - `type_mismatch:amount`: 1
+  - `out_of_range:amount`: 3
+  - `invalid_json`: 2
+  - `missing_required:txn_id`: 1
+  - `missing_required:amount`: 3
+
+- **Drift Fields Captured:** `device_fingerprint`, `phone`
+
+- **PII Policy Applied:**
+  - `card_no`: tokenised
+  - `email`: hashed
+  - `holder`: masked
+
+- **Tables Created:**
+  - Silver: `silver_payments_auth_v3`
+  - DLQ: `dlq_payments_auth_v3`
+  - Gold: `gold_payments_auth_v3_kpi`
+
+[AGENT] @ 2026-10-24 11:01:58:
+```json
+{
+    "caveats": [
+        "Token usage is tracked at the agent level. Counts include usage from any downstream agents called on this agent's behalf.",
+        "Token counts are approximate and estimated using tiktoken.",
+        "time_taken_in_seconds includes overhead from Langchain and Neuro SAN"
+    ],
+    "completion_tokens": 404,
+    "empty_responses": 0,
+    "prompt_tokens": 1523,
+    "successful_requests": 2,
+    "time_taken_in_seconds": 4.074055194854736,
+    "total_cost": 0.0,
+    "total_tokens": 1927
+}
+```

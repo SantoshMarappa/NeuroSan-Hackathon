@@ -1,0 +1,87 @@
+Agent: Math_Geek.problem_formulator
+
+[SYSTEM] @ 2026-10-24 10:52:26:
+
+Your name is `Problem Formulator`.
+You will be handed a mathematical problem or equation or sequence of operations in a particular order.
+- For the given problem, convert it into a sequence of operations from the given list:
+['add', 'subtract', 'multiply', 'divide', 'exponentiate', 'factorial',
+'isprime', 'squareroot', 'log', 'log10', 'log2', 'sin', 'cos', 'tan',
+'asin', 'acos', 'atan', 'sinh', 'cosh', 'tanh', 'gcd', 'lcm', 'mod',
+'ceil', 'floor', 'round', 'abs', 'hypot', 'degrees', 'radians']
+- Each of these operations should be separated by an underscore '_'.
+- For example, if a user asks what is the log of sine of square root of (45^2)/5, the probable sequence should be
+"log" >> "sin" >> "squareroot" >> "divide" >> "exponentiate" and therefore call the CalculatorTool with 
+args operation: "log_sin_squareroot_divide_exponentiate", operands: [45, 2, 5].
+- If a user has given certain angles in degrees, ensure that you convert them to radians.
+- Make sure that the sequence follows the standard mathematical Order of Operations (aka PEMDAS), where required.
+- If the operation requested by the user does not exist in the given list of math_functions, do not invent one and 
+politely respond that the function does not exist currently and ask the user if they want to solve the rest of the problem.
+- Always Call the CalculatorTool to solve the problem.
+
+
+[HUMAN] @ 2026-10-24 10:52:26:
+The inquiry is 'log of sine of square root of (45^2)/5'.
+
+            - Identify the operation and operands from the problem.
+            - Call the CalculatorTool to solve the problem.
+            - The output from this tool would be a JSON block with following fields:
+                {
+                    "name": <your name>,
+                    "inquiry": <the inquiry>,
+                    "operation": <A string that is a sequence of operations separated by an underscore '_'>
+                    "operands": <A list of operands from the problem. This could even be a list of lists for complex operations>,
+                    "error": <any error that you find in the operations>,
+                    "response": <Your response to the inquiry or command>
+                }
+            
+
+[AGENT] @ 2026-10-24 10:52:27:
+Invoking: `CalculatorTool` with:
+```json
+{
+    "invoked_agent_name": "CalculatorTool",
+    "invoking_start": true,
+    "params": {
+        "operands": [
+            45,
+            2,
+            5
+        ],
+        "operation": "log_sin_squareroot_divide_exponentiate"
+    }
+}
+```
+
+[AGENT_TOOL_RESULT (result from CalculatorTool)] @ 2026-10-24 10:52:27:
+{'operation': 'log_sin_squareroot_divide_exponentiate', 'result': -0.044383954227491175}
+
+[AI] @ 2026-10-24 10:52:28:
+```json
+{
+    "name": "Problem Formulator",
+    "inquiry": "log of sine of square root of (45^2)/5",
+    "operation": "log_sin_squareroot_divide_exponentiate",
+    "operands": [45, 2, 5],
+    "error": null,
+    "response": -0.044383954227491175
+}
+```
+
+[AGENT] @ 2026-10-24 10:52:28:
+```json
+{
+    "caveats": [
+        "Token usage is tracked at the agent level. Counts include usage from any downstream agents called on this agent's behalf.",
+        "Token counts are approximate and estimated using tiktoken.",
+        "time_taken_in_seconds includes overhead from Langchain and Neuro SAN"
+    ],
+    "completion_tokens": 140,
+    "empty_responses": 0,
+    "prompt_tokens": 1468,
+    "successful_requests": 2,
+    "time_taken_in_seconds": 1.7550430297851562,
+    "total_cost": 0.0,
+    "total_tokens": 1608
+}
+```

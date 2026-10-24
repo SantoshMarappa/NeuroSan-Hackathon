@@ -1,0 +1,65 @@
+Agent: stream_supervisor.medallion_runner-06
+
+[SYSTEM] @ 2026-10-24 09:37:14:
+
+You are the Curation agent. Call run_medallion exactly once, passing the approved contract JSON string
+only if one was supplied. Summarise the result factually: counts, DLQ reasons, drift fields captured,
+PII policy applied, and table names. If the tool returns an error string, report it verbatim and stop.
+Do not retry destructive runs without being asked.
+
+
+[HUMAN] @ 2026-10-24 09:37:14:
+
+
+[AGENT] @ 2026-10-24 09:37:15:
+Understood. Since no approved contract JSON string was supplied, I will call `run_medallion` without any arguments.
+
+[AGENT] @ 2026-10-24 09:37:15:
+Invoking: `run_medallion` with:
+```json
+{
+    "invoked_agent_name": "run_medallion",
+    "invoking_start": true,
+    "params": {}
+}
+```
+
+[AGENT_TOOL_RESULT (result from run_medallion-06)] @ 2026-10-24 09:37:15:
+{'feed': 'payments_auth_v3', 'bronze_records': 259, 'silver_rows': 0, 'deduplicated': 0, 'dlq_rows': 259, 'dlq_reasons': {'invalid_json': 259}, 'drift_fields_captured': [], 'pii_policy_applied': {'card_no': 'tokenise', 'email': 'hash', 'holder': 'mask'}, 'tables_created': {'silver': 'silver_payments_auth_v3', 'dlq': 'dlq_payments_auth_v3', 'gold': 'gold_payments_auth_v3_kpi'}, 'gold_rows': 0, 'dlq_sample': [{'line': 1, 'reason': 'invalid_json', 'payload': '\t{"txn_id": "T00097", "merchant_id": "8805", "amount": 816.63, "currency": "EUR", "status": "APPROVED", "decline_reason": null, "card_no": "[digits]", "email": [email] "holder": "Liam Chen", "event_ts": "2026-10-21T09:02:01"}'}, {'line': 2, 'reason': 'invalid_json', 'payload': '\t{"txn_id": "T00107", "merchant_id": "8805", "amount": 366.86, "currency": "EUR", "status": "APPROVED", "decline_reason": null, "card_no": "[digits]", "email": [email] "holder": "Asha Rao", "event_ts": "2026-10-21T09:02:13"}'}, {'line': 3, 'reason': 'invalid_json', 'payload': '\t{"txn_id": "T00039", "merchant_id": "4471", "amount": 390.79, "currency": "EUR", "status": "APPROVED", "decline_reason": null, "card_no": "[digits]", "email": [email] "holder": "Liam Chen", "event_ts": "2026-10-21T09:00:48"}'}]}
+
+[AI] @ 2026-10-24 09:37:17:
+The **payments_auth_v3** feed was processed with the following results:
+
+- **Bronze records**: 259
+- **Silver rows**: 0 (no valid data advanced)
+- **Deduplicated**: 0
+- **DLQ rows**: 259
+  - **DLQ reason**: All 259 records failed due to **invalid_json** (leading whitespace and malformed email fields).
+- **Drift fields captured**: None
+- **PII policy applied**:
+  - `card_no`: tokenised
+  - `email`: hashed
+  - `holder`: masked
+- **Tables created**:
+  - Silver: `silver_payments_auth_v3`
+  - DLQ: `dlq_payments_auth_v3`
+  - Gold: `gold_payments_auth_v3_kpi` (empty)
+- **DLQ sample**: 3 records shown, all with invalid JSON (e.g., leading tabs, unquoted emails).
+
+[AGENT] @ 2026-10-24 09:37:17:
+```json
+{
+    "caveats": [
+        "Token usage is tracked at the agent level. Counts include usage from any downstream agents called on this agent's behalf.",
+        "Token counts are approximate and estimated using tiktoken.",
+        "time_taken_in_seconds includes overhead from Langchain and Neuro SAN"
+    ],
+    "completion_tokens": 243,
+    "empty_responses": 0,
+    "prompt_tokens": 1034,
+    "successful_requests": 2,
+    "time_taken_in_seconds": 2.6538405418395996,
+    "total_cost": 0.0,
+    "total_tokens": 1277
+}
+```

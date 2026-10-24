@@ -1,0 +1,56 @@
+Agent: stream_supervisor.insight_agent.gold_query-08
+
+[AGENT] @ 2026-10-24 10:41:44:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "insight_agent"
+            },
+            {
+                "instantiation_index": 8,
+                "tool": "gold_query"
+            }
+        ],
+        "origin_str": "stream_supervisor.insight_agent.gold_query-08",
+        "sql": "SELECT COUNT(*) AS row_count FROM gold_payments_auth_v3_kpi"
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 10:41:44:
+
+Running CodedTool class GoldQuery.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 10:41:44:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "columns": [
+            "row_count"
+        ],
+        "rows": [
+            [
+                0
+            ]
+        ],
+        "sql_executed": "SELECT COUNT(*) AS row_count FROM gold_payments_auth_v3_kpi LIMIT 100",
+        "tables_cited": [
+            "gold_payments_auth_v3_kpi"
+        ]
+    }
+}
+```

@@ -1,0 +1,865 @@
+Agent: stream_supervisor.contract_agent.profile_payloads
+
+[AGENT] @ 2026-10-24 09:32:34:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": null,
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "contract_agent"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "profile_payloads"
+            }
+        ],
+        "origin_str": "stream_supervisor.contract_agent.profile_payloads",
+        "sample_path": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 09:32:34:
+
+Running CodedTool class ProfilePayloads.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 09:32:34:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "contract_in_use": "payments_auth_v3",
+        "drift": {
+            "contract_fields_never_seen": [
+                "amount",
+                "card_no",
+                "currency",
+                "decline_reason",
+                "email",
+                "event_ts",
+                "holder",
+                "merchant_id",
+                "status",
+                "txn_id"
+            ],
+            "mixed_type_fields": [],
+            "new_fields_not_in_contract": []
+        },
+        "duplicate_keys": 0,
+        "invalid_json": 259,
+        "pii_candidates_without_policy": {},
+        "profile": {},
+        "records_total": 259,
+        "sample_path": "data/stream_medallion\\payments_auth_sample.jsonl"
+    }
+}
+```
+
+[AGENT] @ 2026-10-24 09:36:46:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": null,
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "contract_agent"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "profile_payloads"
+            }
+        ],
+        "origin_str": "stream_supervisor.contract_agent.profile_payloads",
+        "sample_path": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 09:36:46:
+
+Running CodedTool class ProfilePayloads.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 09:36:46:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "contract_in_use": "payments_auth_v3",
+        "drift": {
+            "contract_fields_never_seen": [
+                "amount",
+                "card_no",
+                "currency",
+                "decline_reason",
+                "email",
+                "event_ts",
+                "holder",
+                "merchant_id",
+                "status",
+                "txn_id"
+            ],
+            "mixed_type_fields": [],
+            "new_fields_not_in_contract": []
+        },
+        "duplicate_keys": 0,
+        "invalid_json": 259,
+        "pii_candidates_without_policy": {},
+        "profile": {},
+        "records_total": 259,
+        "sample_path": "data/stream_medallion\\payments_auth_sample.jsonl"
+    }
+}
+```
+
+[AGENT] @ 2026-10-24 09:37:55:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": null,
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "contract_agent"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "profile_payloads"
+            }
+        ],
+        "origin_str": "stream_supervisor.contract_agent.profile_payloads",
+        "sample_path": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 09:37:55:
+
+Running CodedTool class ProfilePayloads.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 09:37:55:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "contract_in_use": "payments_auth_v3",
+        "drift": {
+            "contract_fields_never_seen": [
+                "amount",
+                "card_no",
+                "currency",
+                "decline_reason",
+                "email",
+                "event_ts",
+                "holder",
+                "merchant_id",
+                "status",
+                "txn_id"
+            ],
+            "mixed_type_fields": [],
+            "new_fields_not_in_contract": []
+        },
+        "duplicate_keys": 0,
+        "invalid_json": 259,
+        "pii_candidates_without_policy": {},
+        "profile": {},
+        "records_total": 259,
+        "sample_path": "data/stream_medallion\\payments_auth_sample.jsonl"
+    }
+}
+```
+
+[AGENT] @ 2026-10-24 10:42:40:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": null,
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "contract_agent"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "profile_payloads"
+            }
+        ],
+        "origin_str": "stream_supervisor.contract_agent.profile_payloads",
+        "sample_path": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 10:42:40:
+
+Running CodedTool class ProfilePayloads.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 10:42:40:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "contract_in_use": "payments_auth_v3",
+        "drift": {
+            "contract_fields_never_seen": [],
+            "mixed_type_fields": [
+                "amount"
+            ],
+            "new_fields_not_in_contract": [
+                "approved_txns",
+                "auth_rate_pct",
+                "avg_ticket_size",
+                "declined_txns",
+                "device_fingerprint",
+                "kpi_type",
+                "phone",
+                "total_txns",
+                "total_volume_eur",
+                "txn_date"
+            ]
+        },
+        "duplicate_keys": 13,
+        "invalid_json": 2,
+        "pii_candidates_without_policy": {
+            "phone": [
+                "name_hint",
+                "phone"
+            ],
+            "txn_date": [
+                "phone"
+            ]
+        },
+        "profile": {
+            "amount": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 256,
+                    "string": 1
+                }
+            },
+            "approved_txns": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 1
+                }
+            },
+            "auth_rate_pct": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 1
+                }
+            },
+            "avg_ticket_size": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 1
+                }
+            },
+            "card_no": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "currency": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "decline_reason": {
+                "first_seen_line": 1,
+                "null_rate": 0.915,
+                "types": {
+                    "null": 236,
+                    "string": 21
+                }
+            },
+            "declined_txns": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 1
+                }
+            },
+            "device_fingerprint": {
+                "first_seen_line": 9,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 72
+                }
+            },
+            "email": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "event_ts": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "holder": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "kpi_type": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 1
+                }
+            },
+            "merchant_id": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 258
+                }
+            },
+            "phone": {
+                "first_seen_line": 9,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 72
+                }
+            },
+            "status": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "total_txns": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 1
+                }
+            },
+            "total_volume_eur": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 1
+                }
+            },
+            "txn_date": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 1
+                }
+            },
+            "txn_id": {
+                "first_seen_line": 1,
+                "null_rate": 0.004,
+                "types": {
+                    "null": 1,
+                    "string": 257
+                }
+            }
+        },
+        "records_total": 260,
+        "sample_path": "data/stream_medallion\\payments_auth_sample.jsonl"
+    }
+}
+```
+
+[AGENT] @ 2026-10-24 11:00:15:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": null,
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "contract_agent"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "profile_payloads"
+            }
+        ],
+        "origin_str": "stream_supervisor.contract_agent.profile_payloads",
+        "sample_path": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 11:00:15:
+
+Running CodedTool class ProfilePayloads.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 11:00:15:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "contract_in_use": "payments_auth_v3",
+        "drift": {
+            "contract_fields_never_seen": [],
+            "mixed_type_fields": [
+                "amount"
+            ],
+            "new_fields_not_in_contract": [
+                "approved_txns",
+                "auth_rate_pct",
+                "avg_ticket_size",
+                "declined_txns",
+                "device_fingerprint",
+                "kpi_type",
+                "phone",
+                "total_txns",
+                "total_volume_eur",
+                "txn_date"
+            ]
+        },
+        "duplicate_keys": 15,
+        "invalid_json": 2,
+        "pii_candidates_without_policy": {
+            "phone": [
+                "name_hint",
+                "phone"
+            ],
+            "txn_date": [
+                "phone"
+            ]
+        },
+        "profile": {
+            "amount": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 256,
+                    "string": 1
+                }
+            },
+            "approved_txns": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "auth_rate_pct": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "avg_ticket_size": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "card_no": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "currency": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "decline_reason": {
+                "first_seen_line": 1,
+                "null_rate": 0.908,
+                "types": {
+                    "null": 236,
+                    "string": 21
+                }
+            },
+            "declined_txns": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "device_fingerprint": {
+                "first_seen_line": 9,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 72
+                }
+            },
+            "email": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "event_ts": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "holder": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "kpi_type": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 3
+                }
+            },
+            "merchant_id": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 260
+                }
+            },
+            "phone": {
+                "first_seen_line": 9,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 72
+                }
+            },
+            "status": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "total_txns": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "total_volume_eur": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "txn_date": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 3
+                }
+            },
+            "txn_id": {
+                "first_seen_line": 1,
+                "null_rate": 0.004,
+                "types": {
+                    "null": 1,
+                    "string": 259
+                }
+            }
+        },
+        "records_total": 262,
+        "sample_path": "data/stream_medallion\\payments_auth_sample.jsonl"
+    }
+}
+```
+
+[AGENT] @ 2026-10-24 11:01:49:
+Received arguments:
+```json
+{
+    "tool_args": {
+        "contract": null,
+        "origin": [
+            {
+                "instantiation_index": 1,
+                "tool": "stream_supervisor"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "contract_agent"
+            },
+            {
+                "instantiation_index": 1,
+                "tool": "profile_payloads"
+            }
+        ],
+        "origin_str": "stream_supervisor.contract_agent.profile_payloads",
+        "sample_path": null
+    },
+    "tool_start": true
+}
+```
+
+[AGENT] @ 2026-10-24 11:01:49:
+
+Running CodedTool class ProfilePayloads.invoke() synchronously in an asynchronous environment.
+This can lead to performance problems when running within a server. Consider porting to the async_invoke() method.
+
+
+[AGENT] @ 2026-10-24 11:01:49:
+Got result:
+```json
+{
+    "tool_end": true,
+    "tool_error": false,
+    "tool_output": {
+        "contract_in_use": "payments_auth_v3",
+        "drift": {
+            "contract_fields_never_seen": [],
+            "mixed_type_fields": [
+                "amount"
+            ],
+            "new_fields_not_in_contract": [
+                "approved_txns",
+                "auth_rate_pct",
+                "avg_ticket_size",
+                "declined_txns",
+                "device_fingerprint",
+                "kpi_type",
+                "phone",
+                "total_txns",
+                "total_volume_eur",
+                "txn_date"
+            ]
+        },
+        "duplicate_keys": 15,
+        "invalid_json": 2,
+        "pii_candidates_without_policy": {
+            "phone": [
+                "name_hint",
+                "phone"
+            ],
+            "txn_date": [
+                "phone"
+            ]
+        },
+        "profile": {
+            "amount": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 256,
+                    "string": 1
+                }
+            },
+            "approved_txns": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "auth_rate_pct": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "avg_ticket_size": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "card_no": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "currency": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "decline_reason": {
+                "first_seen_line": 1,
+                "null_rate": 0.908,
+                "types": {
+                    "null": 236,
+                    "string": 21
+                }
+            },
+            "declined_txns": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "device_fingerprint": {
+                "first_seen_line": 9,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 72
+                }
+            },
+            "email": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "event_ts": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "holder": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "kpi_type": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 3
+                }
+            },
+            "merchant_id": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 260
+                }
+            },
+            "phone": {
+                "first_seen_line": 9,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 72
+                }
+            },
+            "status": {
+                "first_seen_line": 1,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 257
+                }
+            },
+            "total_txns": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "total_volume_eur": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "number": 3
+                }
+            },
+            "txn_date": {
+                "first_seen_line": 260,
+                "null_rate": 0.0,
+                "types": {
+                    "string": 3
+                }
+            },
+            "txn_id": {
+                "first_seen_line": 1,
+                "null_rate": 0.004,
+                "types": {
+                    "null": 1,
+                    "string": 259
+                }
+            }
+        },
+        "records_total": 262,
+        "sample_path": "data/stream_medallion\\payments_auth_sample.jsonl"
+    }
+}
+```
